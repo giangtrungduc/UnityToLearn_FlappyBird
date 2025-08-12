@@ -25,11 +25,17 @@ public class Spawner : MonoBehaviour
             pool.Enqueue(obj);
         }
 
-        timerCooldown = timeCooldown;
+        timerCooldown = 0;
     }
 
     private void Update()
     {
+        if (GameManager.Instance.isDie)
+        {
+            ResetPipes();
+            return;
+        }    
+
         foreach (GameObject obj in pool)
         {
             if (obj.activeSelf)
@@ -63,5 +69,13 @@ public class Spawner : MonoBehaviour
         }
 
         pool.Enqueue(obj);
+    }
+    private void ResetPipes()
+    {
+        foreach (GameObject obj in pool)
+        {
+            obj.SetActive(false);
+            obj.transform.position = startPos.position;
+        }
     }
 }

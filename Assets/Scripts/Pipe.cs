@@ -6,6 +6,9 @@ public class Pipe : MonoBehaviour
 
     private void Update()
     {
-        transform.position -= new Vector3(speed * Time.deltaTime, 0f, 0f);
+        if(!GameManager.Instance.isDie)
+        {
+            transform.position -= new Vector3(speed * Time.deltaTime, 0f, 0f);
+        }
     }
 }

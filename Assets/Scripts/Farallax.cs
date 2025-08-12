@@ -12,6 +12,9 @@ public class Fara : MonoBehaviour
     }
     private void Update()
     {
-        mr.material.mainTextureOffset += new Vector2(speed * Time.deltaTime, 0f);
+        if(!GameManager.Instance.isDie)
+        {
+            mr.material.mainTextureOffset += new Vector2(speed * Time.deltaTime, 0f);
+        }
     }
 }
